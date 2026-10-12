@@ -1,197 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:fillViewport="true"
+    tools:context=".MainActivity">
 
-    <!-- Çorba Bölümü -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:padding="16dp">
+
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Çorba"
-            android:textSize="16sp"/>
-        <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Birim Fiyat: 4.5 TL"
-            android:textSize="16sp"/>
-    </LinearLayout>
+            android:layout_marginTop="16dp"
+            android:text="Tip Calculator"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="12dp">
-        <EditText
-            android:id="@+id/etCorbaAdet"
+        <!-- Yemek Giriş Kartı -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardYemekler"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Çorba Kase Adedi?"
-            android:inputType="number"
-            android:autofillHints="none"
-            tools:ignore="TouchTargetSizeCheck,HardcodedText"/>
-        <TextView
-            android:id="@+id/tvCorbaToplam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Toplam Fiyat: 0 TL"
-            android:textSize="16sp"/>
-    </LinearLayout>
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
-    <!-- Ana Yemek Bölümü -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Çorba Bölümü -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Çorba (4.5 TL)"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/etCorbaAdet"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Adet"
+                        android:inputType="number"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <!-- Ana Yemek Bölümü -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Ana Yemek (7.4 TL)"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/etYemekAdet"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Adet"
+                        android:inputType="number"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <!-- Tatlı Bölümü -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tatlı (5.3 TL)"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/etTatliAdet"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Adet"
+                        android:inputType="number"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <!-- Bahşiş Oranı -->
+                <EditText
+                    android:id="@+id/etBahsisOrani"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Bahşiş Yüzdesi (Örn: 5)"
+                    android:inputType="number"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Kişi Sayısı -->
+                <EditText
+                    android:id="@+id/etKisiSayisi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Kişi Sayısı (Varsayılan: 1)"
+                    android:inputType="number"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Hesapla Butonu -->
+        <Button
+            android:id="@+id/btnHesapla"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:text="Bahşiş Hesapla"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardYemekler" />
+
+        <!-- Sonuç Kartı -->
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Ana Yemek"
-            android:textSize="16sp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Birim Fiyat: 7.4 TL"
-            android:textSize="16sp"/>
-    </LinearLayout>
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnHesapla">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="12dp">
-        <EditText
-            android:id="@+id/etYemekAdet"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Yemek Tabak Adedi?"
-            android:inputType="number"
-            android:autofillHints="none"
-            tools:ignore="TouchTargetSizeCheck,HardcodedText"/>
-        <TextView
-            android:id="@+id/tvYemekToplam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Toplam Fiyat: 0 TL"
-            android:textSize="16sp"/>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvSonuc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Toplam Yemek: 0 TL\nToplam Bahşiş: 0 TL\nToplam Hesap: 0 TL\nKişi Başı Düşen: 0 TL"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-    <!-- Tatlı Bölümü -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Tatlı"
-            android:textSize="16sp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Birim Fiyat: 5.3 TL"
-            android:textSize="16sp"/>
-    </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
-        <EditText
-            android:id="@+id/etTatliAdet"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Tatlı Servis Adedi?"
-            android:inputType="number"
-            android:autofillHints="none"
-            tools:ignore="TouchTargetSizeCheck,HardcodedText"/>
-        <TextView
-            android:id="@+id/tvTatliToplam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Toplam Fiyat: 0 TL"
-            android:textSize="16sp"/>
-    </LinearLayout>
-
-    <!-- Hesapla Butonu -->
-    <Button
-        android:id="@+id/btnHesapla"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="BAHŞIŞ HESAPLA"
-        android:layout_marginBottom="24dp"/>
-
-    <!-- Sonuç Alanları -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="8dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Toplam Yemek:"
-            android:textSize="16sp"/>
-        <TextView
-            android:id="@+id/tvToplamYemek"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0 TL"
-            android:textSize="16sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="8dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Toplam Bahşiş (%5):"
-            android:textSize="16sp"/>
-        <TextView
-            android:id="@+id/tvToplamBahsis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0 TL"
-            android:textSize="16sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Toplam Hesap:"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/tvToplamHesap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0 TL"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
-    </LinearLayout>
-
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
